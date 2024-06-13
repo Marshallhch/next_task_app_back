@@ -10,6 +10,7 @@ let corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.use(require('./routes/getRoutes'));
 app.use(require('./routes/postRoutes'));
 
 app.listen(3001, () => console.log('Server running on port 3001'));
