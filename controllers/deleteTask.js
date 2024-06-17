@@ -1,7 +1,7 @@
 const database = require('../services/database');
 
-exports.getTasks = async (req, res) => {
-  const userId = req.params.userId;
+exports.deleteTask = async (req, res) => {
+  const id = req.params.id;
 
   // console.log(userId);
 
@@ -9,8 +9,8 @@ exports.getTasks = async (req, res) => {
   // res.send(userId);
   try {
     const result = await database.pool.query(
-      `SELECT * FROM task WHERE userId = $1 ORDER BY created_at DESC`,
-      [userId]
+      `DELETE FROM task WHERE _id = $1`,
+      [id]
     );
 
     // console.log(result.rows);

@@ -1,16 +1,12 @@
 const database = require('../services/database');
 
-exports.getTasks = async (req, res) => {
-  const userId = req.params.userId;
+exports.updateCompletedTask = async (req, res) => {
+  const { id, is_completed } = req.body;
 
-  // console.log(userId);
-
-  // userId를 응답으로 보냅니다.
-  // res.send(userId);
   try {
     const result = await database.pool.query(
-      `SELECT * FROM task WHERE userId = $1 ORDER BY created_at DESC`,
-      [userId]
+      `UPDATE task SET is_completed = $1 WHERE _id = $2`,
+      [is_completed, id]
     );
 
     // console.log(result.rows);

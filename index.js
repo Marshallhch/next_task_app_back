@@ -12,5 +12,7 @@ app.use(express.json());
 
 app.use(require('./routes/getRoutes'));
 app.use(require('./routes/postRoutes'));
+app.use(require('./routes/deleteRoutes'));
+app.use(require('./routes/putRoutes'));
 
 app.listen(3001, () => console.log('Server running on port 3001'));
